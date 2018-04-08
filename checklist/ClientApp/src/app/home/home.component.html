@@ -1,0 +1,13 @@
+
+<button type="button" class="btn btn-primary m-2" (click)="add()">
+    <i class="fa fa-plus-circle mr-1"></i>
+    ADD CHECKLIST
+
+</button>
+
+<br>
+<div>
+    <app-checklist-info class="checklistInfo-component"
+    [checklist]="checklist"
+    *ngFor="let checklist of checklists"> </app-checklist-info>
+</div>

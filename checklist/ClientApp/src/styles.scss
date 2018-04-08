@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap.scss";
+
+
+// @import 'theme.colors.scss';
+
+// @import '../node_modules/bootstrap/scss/bootstrap';
+/* You can add global styles to this file, and also import other style files */
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: max-content auto 22px;
+  grid-template-columns: auto;
+
+  grid-template-areas: "header" "main" "footer"
+
+}
+.container {
+  grid-area: main;
+}
+.main-content {
+  //padding: 2px 4px 2px 4px;
+}
+
+h1 {
+  padding-left: 16px;
+}
+.header {
+  background-color: rgb(12, 35, 56);
+  color: rgb(250, 250, 250);
+  font-size: 21px;
+}
+
+.footer {
+  background-color: #0078CF;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22px !important;
+  color: rgb(250, 250, 250);
+
+}
+.scale-on-hover { transition: all .2s ease-in-out; }
+.scale-on-hover:hover { transform: scale(1.04); }
+
+.scale-on-hover-l { transition: all .2s ease-in-out; }
+.scale-on-hover-l:hover { transform: scale(1.16); }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.routelink {
+  @extend .scale-on-hover;
+  padding: 8px;
+  color: rgb(54, 54, 54);
+  font-size: 17px;
+  cursor: pointer;
+}
+.routelink:hover {
+  background-color: rgb(219, 219, 219)
+}
+
+.indent-routelink {
+  @extend .scale-on-hover;
+  padding: 8px 8px 8px 16px;
+  color: rgb(54, 54, 54);
+  font-size: 17px;
+  cursor: pointer;
+}
+.indent-routelink:hover {
+  background-color: rgb(219, 219, 219)
+}
+
+
+.text-weak {
+  color: rgb(73, 73, 73)
+}
+
+
+.checklistInfo-component {
+    min-width: 320px;
+    display: inline-block;
+}
+
+.checklistInfo {
+    margin: 8px;
+    cursor: pointer;
+}
+
+@media(max-width: 599px) {
+    .checklistInfo-component {
+        width: 100%;
+    }
+}
+
+

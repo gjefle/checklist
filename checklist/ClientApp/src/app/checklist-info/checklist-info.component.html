@@ -1,0 +1,11 @@
+<mat-card class="checklistInfo" (click)="open()">
+
+    <i class="fa fa-pencil-square-o scale-on-hover-l p-2" style="font-size: 20px; position: absolute; top: 10px; right: 10px"
+        (click)="edit()" appClickStopPropagation></i>
+    <i class="fa fa-trash scale-on-hover-l p-2"
+    style="font-size: 20px; position: absolute; top: 8px; right: 40px"
+    (click)="delete()" appClickStopPropagation>
+    </i>
+    <h3>{{checklist.name}}</h3>
+    <div class="text-weak">0 / {{itemLength}}</div>
+</mat-card>
