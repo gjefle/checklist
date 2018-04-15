@@ -1,3 +1,71 @@
-<p>
-  list-edit works!
-</p>
+<div class="h-100 d-flex flex-column justify-content-between">
+    <div>
+        <form [formGroup]="checklistForm" class="form-inline">
+            <div class="form-group">
+                <div class="input-group m-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
+                <div class="input-group m-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Type</span>
+                    </div>
+                    <select name="type" formControlName="type" class="form-control">
+                        <option value="">-Select type-</option>
+                        <option value="">Normal</option>
+                        <option value="">Output</option>
+                        <option value="">Input</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="m-1 btn btn-dark">Save</button>
+            <button class="m-1 btn btn-default">Cancel</button>
+        </form>
+        <br>
+
+        <table class="table-hover table custom-table">
+            <thead>
+                <th>Description</th>
+                <th>IP address</th>
+                <th>Number</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Trigger end switch 1</td>
+                    <td>10.0.0.132</td>
+                    <td>10232</td>
+                    <td>
+                        <i class="fa fa-trash pull-right p-1" style="font-size: 23px"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Trigger end switch 2</td>
+                    <td>10.0.0.132</td>
+                    <td>10233</td>
+                    <td>
+                        <i class="fa fa-trash pull-right p-1" style="font-size: 23px"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Trigger end switch 3</td>
+                    <td>10.0.0.132</td>
+                    <td>10236</td>
+                    <td>
+                        <i class="fa fa-trash pull-right p-1" style="font-size: 23px"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="f-flex">
+        <button mat-fab class="pull-right m-2">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+
+</div>

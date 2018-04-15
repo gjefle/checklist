@@ -1,0 +1,12 @@
+<div *ngIf='checklist.name' class="m-1">
+    <h3 class="m-1">{{checklist.name}}</h3>
+    <div class='item-list d-flex justify-content-between align-items-center' 
+    *ngFor='let item of checklist.checklistItems'
+    [ngStyle]='itemStyle(item)'>
+        <div class="m-1">{{item.name}}</div>
+        <div class="m-1">           
+           <app-state [item]="item" (stateChange)='onStateChange($event, item)'></app-state>
+        </div>
+    </div>
+
+</div>

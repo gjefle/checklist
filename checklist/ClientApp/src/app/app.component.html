@@ -1,6 +1,6 @@
 <div class="app-container">
   <mat-toolbar class="header">
-      HOME
+      <div (click)='navigateToHome()'>HOME / ADD</div>
   </mat-toolbar>
   <div class="main-content">
       <router-outlet #routerOutlet="outlet"></router-outlet>
@@ -8,8 +8,8 @@
 
 
   <mat-toolbar class="footer" fxLayoutAlign="space-between center" style="font-size: 12px">
-    <div>4 lists</div>
-    <div>0 out of 21 items checked</div>
+    <div>{{listCount}}</div>
+    <div>{{checkCount}} out of {{checkTotal}} items checked</div>
     <div>v1.0</div>
   </mat-toolbar>
 </div>

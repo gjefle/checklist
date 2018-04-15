@@ -1,0 +1,12 @@
+<form [formGroup]="stateForm" class="form-inline">
+    <div class="form-group">
+        <div class="btn-group" btnRadioGroup formControlName="state">
+            <label btnRadio="checked" class="btn" uncheckable [ngClass]="[item.state == 'checked' ? 'btn-success' : 'btn-light']">
+                <i class="fa fa-check"></i>
+            </label>
+            <label btnRadio="notOk" class="btn" uncheckable [ngClass]="[item.state == 'notOk' ? 'btn-danger' : 'btn-light']">
+                <i class="fa fa-times"></i>
+            </label>
+        </div>
+    </div>
+</form>

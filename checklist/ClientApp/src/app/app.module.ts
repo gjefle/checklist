@@ -17,29 +17,39 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { ChecklistInfoComponent } from './checklist-info/checklist-info.component';
 import { HomeComponent } from './home/home.component';
+import { ListCheckComponent } from './list-check/list-check.component';
+import { DataService } from './services/data.service';
+import { StateComponent } from './state/state.component';
 import { ListEditComponent } from './list-edit/list-edit.component';
-
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
-    declarations: [AppComponent, ChecklistInfoComponent, HomeComponent, ListEditComponent],
+    declarations: [AppComponent, ChecklistInfoComponent, HomeComponent, ListCheckComponent, StateComponent, ListEditComponent],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
-        FormsModule,
+        FormsModule, ReactiveFormsModule,
         BrowserAnimationsModule,
 
         FlexLayoutModule,
+        ButtonsModule.forRoot(),
 
         MatCardModule,
         MatToolbarModule,
+        MatButtonModule,
 
         RouterModule.forRoot([
-            { path: '', component: HomeComponent }
+            { path: '', redirectTo: 'checklists', pathMatch: 'full' },
+            { path: 'checklists', component: HomeComponent },
+            { path: 'checklists/check/:id', component: ListCheckComponent },            
+            { path: 'checklists/edit/:id', component: ListEditComponent },
+            { path: 'checklists/add', component: ListEditComponent }
+
 
             // { path: 'counter', component: CounterComponent },
             // { path: 'fetch-data', component: FetchDataComponent }
         ])
     ],
-    providers: [],
+    providers: [DataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -2,6 +2,32 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 
+
+
+.custom-table {
+    td {
+        vertical-align: middle;
+    }
+}
+
+
+
+
+.item-list {
+    max-width: 600px;
+}
+
+ @media(max-width: 768px) {
+     .item-list {
+         max-width: 100%;
+     }
+ }
+
+
+.form-group {
+    margin-bottom: 0 !important;
+}
+
 // @import 'theme.colors.scss';
 
 // @import '../node_modules/bootstrap/scss/bootstrap';

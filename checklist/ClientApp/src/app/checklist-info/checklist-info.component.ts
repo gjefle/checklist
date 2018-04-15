@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router} from '@angular/router';
 import { Checklist } from '../models/checklist';
 
 @Component({
@@ -7,7 +8,7 @@ import { Checklist } from '../models/checklist';
 })
 export class ChecklistInfoComponent implements OnInit {
   @Input() checklist: Checklist;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -19,7 +20,9 @@ export class ChecklistInfoComponent implements OnInit {
     return length;
   }
 
-  open() {}
+  open() {
+    this.router.navigate([`checklists/check/${this.checklist.checklistId}`]);
+  }
 
   delete() {}
 
