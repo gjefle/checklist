@@ -32,11 +32,24 @@
     <None Remove="ClientApp\e2e\app.po.ts" />
     <None Remove="ClientApp\src\app\app.component.ts" />
     <None Remove="ClientApp\src\app\app.module.ts" />
+    <None Remove="ClientApp\src\app\checklist-info\checklist-info.component.spec.ts" />
+    <None Remove="ClientApp\src\app\checklist-info\checklist-info.component.ts" />
     <None Remove="ClientApp\src\app\counter\counter.component.spec.ts" />
     <None Remove="ClientApp\src\app\counter\counter.component.ts" />
     <None Remove="ClientApp\src\app\fetch-data\fetch-data.component.ts" />
+    <None Remove="ClientApp\src\app\home\home.component.spec.ts" />
     <None Remove="ClientApp\src\app\home\home.component.ts" />
+    <None Remove="ClientApp\src\app\list-check\list-check.component.spec.ts" />
+    <None Remove="ClientApp\src\app\list-check\list-check.component.ts" />
+    <None Remove="ClientApp\src\app\list-edit\list-edit.component.spec.ts" />
+    <None Remove="ClientApp\src\app\list-edit\list-edit.component.ts" />
+    <None Remove="ClientApp\src\app\models\checklist-item.ts" />
+    <None Remove="ClientApp\src\app\models\checklist.ts" />
     <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.ts" />
+    <None Remove="ClientApp\src\app\services\data.service.spec.ts" />
+    <None Remove="ClientApp\src\app\services\data.service.ts" />
+    <None Remove="ClientApp\src\app\state\state.component.spec.ts" />
+    <None Remove="ClientApp\src\app\state\state.component.ts" />
     <None Remove="ClientApp\src\environments\environment.prod.ts" />
     <None Remove="ClientApp\src\environments\environment.ts" />
     <None Remove="ClientApp\src\main.ts" />
@@ -51,15 +64,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\e2e\app.e2e-spec.ts" />
     <TypeScriptCompile Include="ClientApp\e2e\app.po.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\checklist-info\checklist-info.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\checklist-info\checklist-info.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\counter\counter.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\counter\counter.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\fetch-data\fetch-data.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\home\home.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\list-check\list-check.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\list-check\list-check.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\list-edit\list-edit.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\list-edit\list-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\checklist-item.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\checklist.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\nav-menu\nav-menu.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\data.service.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\state\state.component.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\state\state.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="ClientApp\src\environments\environment.ts" />
     <TypeScriptCompile Include="ClientApp\src\main.ts" />
