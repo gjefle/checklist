@@ -14,8 +14,8 @@ export class ChecklistInfoComponent implements OnInit {
 
   get itemLength() {
     let length = 0;
-    if (this.checklist && this.checklist.checklistItems) {
-      length = this.checklist.checklistItems.length;
+    if (this.checklist && this.checklist.outputCheckItems) {
+      length = this.checklist.outputCheckItems.length;
     }
     return length;
   }

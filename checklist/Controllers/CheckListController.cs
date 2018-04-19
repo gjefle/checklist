@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessEngine;
 using Data;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,11 @@ namespace checklist.Controllers
     [Route("api/checklist")]
     public class CheckListController : Controller
     {
-        private DataContext _ctx;
+        private IDataHandler _dataHandler;
 
-        public CheckListController(DataContext ctx)
+        public CheckListController(IDataHandler dataHandler)
         {
-            _ctx = ctx;
+            _dataHandler = dataHandler;
 
             //if (_ctx.Checklists.Count() == 0)
             //{
@@ -32,21 +33,20 @@ namespace checklist.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetChecklists()
+        public IActionResult GetChecklists()
         {
-            var checkLists = await _ctx.Checklists
-                .Include(c => c.OutputCheckItems)
-                .ToListAsync();
-            
+            var checkLists = _dataHandler.GetCheckLists();
+
             return Ok(checkLists);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetChecklistById(int id)
+        public IActionResult GetChecklistById(int id)
         {
-            var checkList = await _ctx.Checklists
-                .Include(c => c.OutputCheckItems)
-                .FirstOrDefaultAsync(c => c.ChecklistId == id);
+            var checkList = _dataHandler
+                .GetCheckLists()
+                .FirstOrDefault(c => c.ChecklistId == id);
+
             if (checkList == null)
             {
                 return NotFound();
@@ -56,13 +56,32 @@ namespace checklist.Controllers
 
         [HttpPost]
         [ProducesResponseType(201)]
-        public ActionResult CreateChecklist([FromBody] Checklist checklist)
+        public IActionResult CreateChecklist([FromBody] Checklist checklist)
         {
-            _ctx.Checklists.Add(checklist);
-            _ctx.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetChecklistById), new { checklistId = checklist.ChecklistId }, checklist);
+            var updatedChecklist = _dataHandler.AddOrEditChecklist(checklist);
+            return CreatedAtAction(nameof(Checklist.ChecklistId), new { checklistId = checklist.ChecklistId }, checklist);
+            //_ctx.Checklists.Add(checklist);
+            //_ctx.SaveChangesAsync();
+            //return CreatedAtAction(nameof(GetChecklistById), new { checklistId = checklist.ChecklistId }, checklist);
+
         }
 
 
+        
+        //[HttpPut]
+        //[ProducesResponseType(typeof(BadRequestObjectResult), 400)]
+        //[ProducesResponseType(typeof(OkObjectResult), 200)]
+        //[ProducesResponseType(typeof(NotFoundResult), 404)]
+        //public IActionResult UpdateUserSetting([FromBody]Checklist checklist)
+        //{
+        //    var dbChecklist = _ctx.Checklists
+        //           .FirstOrDefault(c => c.ChecklistId == checklist.ChecklistId);
+
+        //    if (dbChecklist == null) return NotFound();
+        //    dbChecklist.Name = checklist.Name;
+        //    dbChecklist.OutputCheckItems = checklist.OutputCheckItems;
+        //    _ctx.SaveChanges();
+        //    return Ok(checklist);
+        //}
     }
 }

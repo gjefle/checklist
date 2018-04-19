@@ -1,5 +1,5 @@
 export class ChecklistItem {
     checklistItemId: number;
-    name: string;
+    description: string;    
     state: string;
 }

@@ -17,8 +17,8 @@ export class AppComponent {
         let count = 0;
         if (this.dataService.checklists) {
             this.dataService.checklists.forEach(list => {
-                if (list.checklistItems) {
-                    list.checklistItems.forEach(item => {
+                if (list.outputCheckItems) {
+                    list.outputCheckItems.forEach(item => {
                         if (item.state && item.state !== 'unchecked') {
                             count++;
                         }
@@ -33,7 +33,7 @@ export class AppComponent {
         let count = 0;
         if (this.dataService.checklists) {
             this.dataService.checklists.forEach(list => {
-                count += list.checklistItems.length;
+                count += list.outputCheckItems.length;
             });
         }
         return count;
