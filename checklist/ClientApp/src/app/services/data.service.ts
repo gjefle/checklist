@@ -1,30 +1,47 @@
 import { Injectable } from '@angular/core';
 import { ChecklistItem } from '../models/checklist-item';
 import { Checklist } from '../models/checklist';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
     checklists: Checklist[];
+    obs: Observable<any>;
     constructor(private httpClient: HttpClient) {
+        this.obs = new Observable();
         this.getChecklists().subscribe((res: Checklist[]) => {
             this.checklists = res;
         });
     }
 
-    getCheckList(id: number) {
-        return this.checklists.find(c => c.checklistId == id);
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
+
+    getCheckList(id: number): Checklist {
+        if (this.checklists) {
+            return this.checklists.find(c => c.checklistId == id);
+        }
+        return null;
     }
 
-    setState(item: ChecklistItem, state: string) {
-        //var localItem = this.        
+    setState(item: ChecklistItem, state: string, checklist: Checklist) {
+        let url = 'api/checklist';
+        return this.httpClient.post<Checklist>(
+            url,
+            checklist,
+            this.httpOptions
+        ).subscribe();
+        //.pipe(tap(res => console.log(res)), catchError(null));
     }
 
-    private getChecklists(): Observable<any> {
-        return this.httpClient.get('api/checklist');
 
-
+    private getChecklists(): Observable<Checklist[]> {
+        return this.obs = this.httpClient.get<Checklist[]>('api/checklist');
 
         // let c1 = new Checklist();
         // c1.name = 'End switches';

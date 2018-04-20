@@ -12,20 +12,23 @@ import { ChecklistItem } from '../models/checklist-item';
     styleUrls: ['./list-check.component.scss']
 })
 export class ListCheckComponent implements OnInit {
-    checklist: Checklist;
+    //checklist: Checklist;
     routeSub: Subscription;
+    id: string;
     constructor(
         private activateRoute: ActivatedRoute,
         private dataService: DataService
     ) {}
-
+    get checklist(): Checklist {
+        return this.dataService.getCheckList(Number(this.id));
+    }
     ngOnInit() {
-        this.routeSub = this.activateRoute.params.subscribe(this.getSite);
+        this.routeSub = this.activateRoute.params.subscribe(this.setId);
     }
 
     onStateChange(event, item: ChecklistItem) {
         item.state = event;
-        this.dataService.setState(item, event);
+        this.dataService.setState(item, event, this.checklist);
     }
 
     itemStyle(item: ChecklistItem) {
@@ -40,8 +43,8 @@ export class ListCheckComponent implements OnInit {
         };
     }
 
-    private getSite = params => {
-        const id = params['id'];
-        this.checklist = this.dataService.getCheckList(id);
+    private setId = params => {
+        this.id = params['id'];
+        //this.checklist = this.dataService.getCheckList(id);
     };
 }

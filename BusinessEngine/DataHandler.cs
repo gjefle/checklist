@@ -32,7 +32,8 @@ namespace BusinessEngine
         public Checklist AddOrEditChecklist(Checklist checklist)
         {
             var dbChecklist = _ctx.Checklists
-                .FirstOrDefault(c => c.ChecklistId == checklist.ChecklistId);
+                    .Include(c => c.OutputCheckItems)
+                    .FirstOrDefault(c => c.ChecklistId == checklist.ChecklistId);
 
             if (dbChecklist == null)
             {
@@ -43,6 +44,7 @@ namespace BusinessEngine
             else
             {
                 dbChecklist.Name = checklist.Name;
+                _ctx.RemoveRange(dbChecklist.OutputCheckItems);
                 dbChecklist.OutputCheckItems = checklist.OutputCheckItems;
                 _ctx.SaveChanges();
                 return dbChecklist;
@@ -51,7 +53,7 @@ namespace BusinessEngine
 
         public void DeleteChecklist(Checklist checklist)
         {
-            if(checklist == null) return;
+            if (checklist == null) return;
             var dbChecklist = _ctx.Checklists.FirstOrDefault(c => c.ChecklistId == checklist.ChecklistId);
             if (dbChecklist != null)
             {

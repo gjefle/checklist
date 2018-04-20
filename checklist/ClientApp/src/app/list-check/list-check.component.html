@@ -1,4 +1,4 @@
-<div *ngIf='checklist.name' class="m-1">
+<div *ngIf='checklist && checklist.name' class="m-1">
     <h3 class="m-1">{{checklist.name}}</h3>
     <div class='item-list d-flex justify-content-between align-items-center' 
     *ngFor='let item of checklist.outputCheckItems'

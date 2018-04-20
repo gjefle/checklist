@@ -25,6 +25,6 @@ export class StateComponent implements OnInit {
     onStateChange = (event: any) => {
 
         this.item.state = event.state ? event.state : 'unchecked';
-        //this.stateChange.emit(state);
+        this.stateChange.emit(this.item.state);
     };
 }

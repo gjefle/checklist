@@ -65,8 +65,6 @@ namespace checklist.Controllers
             //return CreatedAtAction(nameof(GetChecklistById), new { checklistId = checklist.ChecklistId }, checklist);
 
         }
-
-
         
         //[HttpPut]
         //[ProducesResponseType(typeof(BadRequestObjectResult), 400)]
