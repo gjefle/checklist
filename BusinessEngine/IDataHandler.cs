@@ -13,7 +13,7 @@ namespace BusinessEngine
 
         Checklist AddOrEditChecklist(Checklist checklist);
 
-        void DeleteChecklist(Checklist checklist);
+        void DeleteChecklist(int id);
 
         void TriggerItem(CheckItem item);
 

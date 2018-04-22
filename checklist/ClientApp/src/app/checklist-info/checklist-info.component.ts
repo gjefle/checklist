@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router} from '@angular/router';
 import { Checklist } from '../models/checklist';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-checklist-info',
@@ -8,7 +9,7 @@ import { Checklist } from '../models/checklist';
 })
 export class ChecklistInfoComponent implements OnInit {
   @Input() checklist: Checklist;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dataService: DataService) {}
 
   ngOnInit() {}
 
@@ -24,7 +25,9 @@ export class ChecklistInfoComponent implements OnInit {
     this.router.navigate([`checklists/check/${this.checklist.checklistId}`]);
   }
 
-  delete() {}
+  delete() {
+      this.dataService.deleteChecklist(this.checklist);
+  }
 
   edit() {}
 }

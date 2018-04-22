@@ -25,4 +25,23 @@ export class HomeComponent implements OnInit {
     add() {
         this.router.navigate(['checklists/add']);
     }
+
+
+  itemLength(checklist: Checklist) {
+    let length = 0;
+    if (checklist && checklist.outputCheckItems) {
+      length = checklist.outputCheckItems.length;
+    }
+    return length;
+  }
+
+  open(checklist: Checklist) {
+    this.router.navigate([`checklists/check/${checklist.checklistId}`]);
+  }
+
+  delete(checklist: Checklist) {
+      this.dataService.deleteChecklist(checklist);
+  }
+
+  edit() {}
 }

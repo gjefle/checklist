@@ -51,8 +51,9 @@ namespace BusinessEngine
             }
         }
 
-        public void DeleteChecklist(Checklist checklist)
+        public void DeleteChecklist(int id)
         {
+            var checklist = _ctx.Checklists.FirstOrDefault(c => c.ChecklistId == id);
             if (checklist == null) return;
             var dbChecklist = _ctx.Checklists.FirstOrDefault(c => c.ChecklistId == checklist.ChecklistId);
             if (dbChecklist != null)

@@ -7,7 +7,20 @@
 
 <br>
 <div>
-    <app-checklist-info class="checklistInfo-component"
+        <mat-card class="checklistInfo" (click)="open(checklist)" *ngFor="let checklist of checklists">
+
+                <i class="fa fa-pencil-square-o scale-on-hover-l p-2" style="font-size: 20px; position: absolute; top: 10px; right: 10px"
+                    (click)="edit(checklist); $event.stopPropagation()" appClickStopPropagation></i>
+                <i class="fa fa-trash scale-on-hover-l p-2"
+                style="font-size: 20px; position: absolute; top: 8px; right: 40px"
+                (click)="delete(checklist); $event.stopPropagation()" appClickStopPropagation>
+                </i>
+                <h3>{{checklist.name}}</h3>
+                <div class="text-weak">0 / {{itemLength(checklist)}}</div>
+            </mat-card>
+
+    
+    <!-- <app-checklist-info class="checklistInfo-component"
     [checklist]="checklist"
-    *ngFor="let checklist of checklists"> </app-checklist-info>
+    *ngFor="let checklist of checklists"> </app-checklist-info> -->
 </div>

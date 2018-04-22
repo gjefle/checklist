@@ -65,7 +65,15 @@ namespace checklist.Controllers
             //return CreatedAtAction(nameof(GetChecklistById), new { checklistId = checklist.ChecklistId }, checklist);
 
         }
-        
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteChecklist(int id)
+        {
+            _dataHandler.DeleteChecklist(id);
+            return Ok();
+        }
+
+
         //[HttpPut]
         //[ProducesResponseType(typeof(BadRequestObjectResult), 400)]
         //[ProducesResponseType(typeof(OkObjectResult), 200)]

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from '../services/data.service';
+import { Checklist } from '../models/checklist';
 
 @Component({
     selector: 'app-list-edit',
@@ -8,6 +9,7 @@ import { DataService } from '../services/data.service';
     styleUrls: ['./list-edit.component.scss']
 })
 export class ListEditComponent implements OnInit {
+    @Input() checklist: Checklist;
     checklistForm: FormGroup;
     constructor(
         private formBuilder: FormBuilder,
@@ -15,14 +17,27 @@ export class ListEditComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.checklistForm = this.formBuilder.group({
-            name: '',
-            type: ''
-        });
+        if (this.checklist) {
+            this.checklistForm = this.formBuilder.group({
+                name: ''                
+            });
+        } else {
+            this.checklist = {
+                checklistId: 0,
+                name: '',
+                outputCheckItems: []
+            };
+            this.checklistForm = this.formBuilder.group({
+                name: this.checklist.name
+            });
+        }
+
         this.checklistForm.valueChanges.subscribe(this.onFormChange);
     }
-
-    onFormChange = val => {
-
+    save() {
+        this.checklist.name = this.checklistForm.value.name as string;
+        this.dataService.addOrEditChecklist(this.checklist);
     }
+
+    onFormChange = val => {};
 }

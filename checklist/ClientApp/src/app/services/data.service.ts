@@ -29,19 +29,29 @@ export class DataService {
         return null;
     }
 
+    deleteChecklist(checklist: Checklist) {
+        this.httpClient
+            .delete(`api/checklist/${checklist.checklistId}`, this.httpOptions)
+            .subscribe();
+    }
+
     setState(item: ChecklistItem, state: string, checklist: Checklist) {
         let url = 'api/checklist';
-        return this.httpClient.post<Checklist>(
-            url,
-            checklist,
-            this.httpOptions
-        ).subscribe();
+        return this.httpClient
+            .post<Checklist>(url, checklist, this.httpOptions)
+            .subscribe();
         //.pipe(tap(res => console.log(res)), catchError(null));
     }
 
+    addOrEditChecklist(checklist: Checklist) {
+        let url = 'api/checklist';
+        return this.httpClient
+            .post<Checklist>(url, checklist, this.httpOptions)
+            .subscribe(res => this.getChecklists());
+    }
 
     private getChecklists(): Observable<Checklist[]> {
-        return this.obs = this.httpClient.get<Checklist[]>('api/checklist');
+        return (this.obs = this.httpClient.get<Checklist[]>('api/checklist'));
 
         // let c1 = new Checklist();
         // c1.name = 'End switches';
