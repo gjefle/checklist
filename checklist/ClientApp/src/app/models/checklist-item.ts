@@ -5,4 +5,5 @@ export class ChecklistItem {
     description: string;
     state: string;
     checklist: Checklist;
+  
 }

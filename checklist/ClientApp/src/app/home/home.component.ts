@@ -43,5 +43,7 @@ export class HomeComponent implements OnInit {
       this.dataService.deleteChecklist(checklist);
   }
 
-  edit() {}
+  edit(checklist: Checklist) {
+    this.router.navigate([`checklists/edit/${checklist.checklistId}`]);
+  }
 }

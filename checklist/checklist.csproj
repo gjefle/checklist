@@ -47,6 +47,7 @@
     <None Remove="ClientApp\src\app\list-edit\list-edit.component.ts" />
     <None Remove="ClientApp\src\app\models\checklist-item.ts" />
     <None Remove="ClientApp\src\app\models\checklist.ts" />
+    <None Remove="ClientApp\src\app\models\input-check-item.ts" />
     <None Remove="ClientApp\src\app\models\output-check-item.ts" />
     <None Remove="ClientApp\src\app\models\output-checklist-item.ts" />
     <None Remove="ClientApp\src\app\nav-menu\nav-menu.component.ts" />
@@ -90,6 +91,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\list-edit\list-edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\checklist-item.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\checklist.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\input-check-item.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\output-check-item.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\output-checklist-item.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\nav-menu\nav-menu.component.ts" />

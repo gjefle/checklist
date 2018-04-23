@@ -1,5 +1,5 @@
 <div class="h-100 d-flex flex-column justify-content-between">
-    <div>
+    <div *ngIf="checklistForm">
         <form [formGroup]="checklistForm" class="form-inline">
             <div class="form-group">
                 <div class="input-group m-3">
@@ -13,7 +13,7 @@
                         <span class="input-group-text">Type</span>
                     </div>
                     <select [attr.disabled]="true" name="type" formControlName="type" class="form-control">
-                        <option value="">Output</option>
+                        <option value="output">Output</option>
                         <option value="">Normal</option>
                         <option value="">Output</option>
                         <option value="">Input</option>
@@ -23,47 +23,44 @@
 
             <button class="m-1 btn btn-dark" (click)="save()">Save</button>
             <button class="m-1 btn btn-default">Cancel</button>
-        </form>
-        <br>
 
-        <table class="table-hover table custom-table">
-            <thead>
-                <th>Description</th>
-                <th>IP address</th>
-                <th>Number</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Trigger end switch 1</td>
-                    <td>10.0.0.132</td>
-                    <td>10232</td>
-                    <td>
-                        <i class="fa fa-trash pull-right p-1" style="font-size: 23px"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Trigger end switch 2</td>
-                    <td>10.0.0.132</td>
-                    <td>10233</td>
-                    <td>
-                        <i class="fa fa-trash pull-right p-1" style="font-size: 23px"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Trigger end switch 3</td>
-                    <td>10.0.0.132</td>
-                    <td>10236</td>
-                    <td>
-                        <i class="fa fa-trash pull-right p-1" style="font-size: 23px"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <br>
+
+            <table class="table-hover table custom-table">
+                <thead>
+                    <th>Description</th>
+                    <th>IP address</th>
+                    <th>Number</th>
+                    <th></th>
+                </thead>
+                <tbody formArrayName="outputCheckItems">
+                    <tr [formGroupName]="i" *ngFor="let item of itemsForm.controls; let i = index">
+                        <td>
+                            <input class="from-control" formControlName="description" type="text">
+                        </td>
+                        <td>
+
+                            <input formControlName="ipAddress" type="text">
+
+                        </td>
+                        <td>
+                            <input formControlName="number" type="number">
+
+                        </td>
+                        <td>
+                            <i class="fa fa-check p-1" style="font-size: 23px" *ngIf="editIndex == i" (click)="confirmEdit()"></i>
+                            <i class="fa fa-trash pull-right p-1" style="font-size: 23px" (click)="removeItem(item)"></i>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
     </div>
 
     <div class="f-flex">
-        <button mat-fab class="pull-right m-2">
+        <button mat-fab class="pull-right m-2" (click)="addItem()">
+
             <i class="fa fa-plus"></i>
         </button>
     </div>
