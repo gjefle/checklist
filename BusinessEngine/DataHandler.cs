@@ -63,8 +63,12 @@ namespace BusinessEngine
             }
         }
 
-        public void TriggerItem(CheckItem item)
+        public void TriggerItem(OutputCheckItem item)
         {
+            var val = !item.NormallyHigh;
+            _modbusWatcher.SetValue(item.IpAddress, (ushort)item.Number, val);
+            Task.Delay(5000).Wait();
+            _modbusWatcher.SetValue(item.IpAddress, (ushort)item.Number, !val);
         }
     }
 }

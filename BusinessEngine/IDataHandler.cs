@@ -15,7 +15,7 @@ namespace BusinessEngine
 
         void DeleteChecklist(int id);
 
-        void TriggerItem(CheckItem item);
+        void TriggerItem(OutputCheckItem item);
 
     }
 }

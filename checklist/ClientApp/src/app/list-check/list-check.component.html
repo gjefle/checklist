@@ -3,6 +3,14 @@
     <div class='item-list d-flex justify-content-between align-items-center' 
     *ngFor='let item of checklist.outputCheckItems'
     [ngStyle]='itemStyle(item)'>
+    <div>
+        <button *ngIf="!triggered(item)" class="btn btn-light" (click)="trigger(item)">Trigger</button>
+        <div *ngIf="triggered(item)" class="">
+            <div>Running</div>
+            <!-- <progressbar max="100" [value]="itemCountdown(item)"></progressbar> -->
+       
+        </div>
+    </div>
         <div class="m-1">{{item.description}}</div>
         <div class="m-1">           
            <app-state [item]="item" (stateChange)='onStateChange($event, item)'></app-state>

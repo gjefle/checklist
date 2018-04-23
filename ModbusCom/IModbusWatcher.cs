@@ -13,6 +13,7 @@ namespace ModbusCom
 
         Tuple<int, bool> GetValues(List<OutputCheckItem> checkItems);
 
+        void SetValue(string ip, ushort number, bool val);
 
     }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { AppComponent } from './app.component';
 
 // Angular material and flex layout
@@ -32,7 +32,7 @@ import {MatButtonModule} from '@angular/material/button';
 
         FlexLayoutModule,
         ButtonsModule.forRoot(),
-
+        ProgressbarModule.forRoot(),
         MatCardModule,
         MatToolbarModule,
         MatButtonModule,

@@ -1,7 +1,7 @@
 import { Checklist } from "./checklist";
 
 export class ChecklistItem {
-    checklistItemId: number;
+    //checklistItemId: number;
     description: string;
     state: string;
     checklist: Checklist;

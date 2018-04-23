@@ -5,10 +5,12 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
+import { OutputCheckItem } from '../models/output-check-item';
 
 @Injectable()
 export class DataService {
     checklists: Checklist[];
+
     obs: Observable<any>;
     constructor(private httpClient: HttpClient) {
         this.obs = new Observable();
@@ -20,7 +22,11 @@ export class DataService {
             'Content-Type': 'application/json'
         })
     };
-
+   triggerItem(item) {
+       let url = 'api/trigger';
+       this.httpClient.post<Checklist>(url, item, this.httpOptions)
+       .subscribe(this.loadLists);
+   }
     getCheckList(id: number): Checklist {
         if (this.checklists) {
             return this.checklists.find(c => c.checklistId == id);
@@ -58,8 +64,8 @@ export class DataService {
         this.getChecklists().subscribe(res => {
             this.checklists = res;
         });
-    }
+    };
     getChecklists = (): Observable<Checklist[]> => {
         return (this.obs = this.httpClient.get<Checklist[]>('api/checklist'));
-    }
+    };
 }

@@ -102,7 +102,7 @@ export class ListEditComponent implements OnInit {
                 number: el.value.number,
                 normallyHigh: false,
                 state: 'unchecked',
-                checklistItemId: 0,
+                outputCheckItemId: 0,
                 checklist: null
             };
             items.push(item);
